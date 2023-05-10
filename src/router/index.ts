@@ -2,12 +2,12 @@
  * @Author: TQtong 2733707740@qq.com
  * @Date: 2023-05-08 20:17:58
  * @LastEditors: TQtong 2733707740@qq.com
- * @LastEditTime: 2023-05-09 21:10:19
+ * @LastEditTime: 2023-05-10 14:38:20
  * @FilePath: \learn-three-demo\src\router\index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomePage from '@/views/HomePage/HomePage.vue'
+import HomePage from '@/views/HomePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
