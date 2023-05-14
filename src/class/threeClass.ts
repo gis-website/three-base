@@ -2,7 +2,7 @@
  * @Author: TQtong 2733707740@qq.com
  * @Date: 2023-05-10 20:17:18
  * @LastEditors: TQtong 2733707740@qq.com
- * @LastEditTime: 2023-05-10 20:23:27
+ * @LastEditTime: 2023-05-14 10:55:47
  * @FilePath: \three-base\src\class\threeClass.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -14,14 +14,14 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 // three框架本身自带效果
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass'
-import { threeBase } from '@/base/threeBase'
+import { IThreeBase } from '@/interfaces/threeBase'
 
-export default class ThreeClass implements threeBase {
-    element: HTMLDivElement
-    width: number
-    height: number
+export default class ThreeClass implements IThreeBase {
+   private element: HTMLDivElement
+   private width: number
+   private height: number
 
-    sence!: Scene
+   scene!: Scene
     camera!: PerspectiveCamera
     renderer!: WebGLRenderer
     control!: OrbitControls
@@ -36,15 +36,15 @@ export default class ThreeClass implements threeBase {
     }
 
     private init () {
-      this.initSence()
+      this.initScene()
       this.initCamera()
       this.initRenderer()
       this.initControl()
       this.initEffect()
     }
 
-    private initSence () {
-      this.sence = new Scene()
+    private initScene () {
+      this.scene = new Scene()
     }
 
     private initCamera () {
@@ -76,7 +76,7 @@ export default class ThreeClass implements threeBase {
       this.effectComposer.setSize(this.width, this.height)
 
       // add render pass
-      const renderPass = new RenderPass(this.sence, this.camera)
+      const renderPass = new RenderPass(this.scene, this.camera)
       this.effectComposer.addPass(renderPass)
 
       // add unreal bloom pass
@@ -86,7 +86,7 @@ export default class ThreeClass implements threeBase {
 
     public addAxis () {
       const axis = new AxesHelper(20)
-      this.sence.add(axis)
+      this.scene.add(axis)
     }
 
     public render () {
